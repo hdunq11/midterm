@@ -1,0 +1,89 @@
+{
+  "Read all node": {
+    "api": "/get",
+    "method": "GET",
+    "data": [
+      {
+        "id": 1,
+        "title": "HPMD",
+        "score": 19,
+        "role1": "sinh vien",
+        "role2": "con ut",
+        "role3": "Viet's"
+      },
+      {}, {}
+    ]
+  },
+
+  "Read a node": {
+    "api": "/get",
+    "method": "POST",
+    "transfer_data": {
+      "id": "1"
+    },
+    "data": {
+      "id": 1,
+      "title": "HPMD",
+      "score": 19,
+      "role1": "sinh vien",
+      "role2": "con ut",
+      "role3": "Viet's"
+    }
+  },
+
+  "Add a node": {
+    "api": "/add",
+    "method": "POST",
+    "transfer_data": {
+      "id": 1,
+      "title": "HPMD",
+      "score": 19,
+      "role1": "sinh vien",
+      "role2": "con ut",
+      "role3": "Viet's"
+    }
+  },
+
+  "Delete a node": {
+    "api": "/delete",
+    "method": "POST",
+    "transfer_data": {
+      "id": 1
+    }
+  },
+
+  "update a node": {
+    "api": "/update",
+    "method": "POST",
+    "transfer_data": {
+      "id": 1,
+      "title": "em iu",
+      "score": 20,
+      "role1": "vo anh",
+      "role2": "lai la vo anh",
+      "role3": "khong khac ngoai vo anh"
+    }
+  },
+
+  "search for node(s) by filter": {
+    "api": "/search/",
+    "method": "POST",
+    "transfer_data": {
+      "random_field": "value by field"
+    },
+    "data": [
+      {
+        "id": 1,
+        "title": "em iu",
+        "score": 20,
+        "role1": "vo anh",
+        "role2": "lai la vo anh",
+        "role3": "khong khac ngoai vo anh"
+      },
+      {}
+    ]
+  }
+
+  
+
+}
