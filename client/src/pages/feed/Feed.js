@@ -1,41 +1,34 @@
-import axios from 'axios'; 
+import axios from 'axios' 
 import React, {useState, useEffect} from 'react'; 
 import styles from './css.module.css'
 
 export default function Feed() {
 
-    const [data, setData] = useState([]);
+    const [data, setData] = useState([
+        {'id': 0, 'title': '', 'score': 0, "role1": '', "role2": '', "role3": ''}
+    ]);
 
-    useEffect(() => {
-        let set_data = [{ id: 1, name: 'John Doe', age: 25 },
-        { id: 2, name: 'Jane Smith', age: 30 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 4, name: 'John Doe', age: 25 },
-        { id: 2, name: 'Jane Smith', age: 30 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 1, name: 'John Doe', age: 25 },
-        { id: 2, name: 'Jane Smith', age: 30 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 1, name: 'John Doe', age: 25 },
-        { id: 2, name: 'Jane Smith', age: 30 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 1, name: 'John Doe', age: 25 },
-        { id: 2, name: 'Jane Smith', age: 30 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 1, name: 'John Doe', age: 25 },
-        { id: 2, name: 'Jane Smith', age: 30 },
-        { id: 3, name: 'Bob Johnson', age: 35 },]
+    // Get all of user's information here (async func)
+    // useEffect(() => {
+    //     axios.get('/get').then(res => setData(res.data.data))
+    // }, [])
 
-        setData(set_data)
-    }, [])
-
-
+    // Search for data with user's choice (only choose 1 option)
     const search = () => {
-        // api search node
+        const searchValue = document.getElementById('search-bar').value;
+        const filterValue = document.getElementById('filter').value
+
+        // If user choose field that need to be integer for handling then covert it
+        if(filterValue == 'id' || filterValue == 'score')
+            searchValue = parseInt(searchValue)
+
+        const transfer_data = {filterValue: searchValue}
+        axios.post('/search', transfer_data).then(res => setData(res.data.data))
+
     }
     
     const add = () => {
-        // api add node
+        window.location.href = '/add'
     }
     
     return (
@@ -43,7 +36,12 @@ export default function Feed() {
             <div className={styles.main}>
                 <div className={styles.container}>
                     <div className={styles.add}>
-                    <div class="search-container">
+                    <div class="search-container" value='none'>
+                        <select id="filter">
+                            <option value="name">Name</option>
+                            <option value="id">ID</option>
+                            <option value='none' selected>None</option>
+                        </select>
                         <input type="text" id="search-bar" placeholder="Search"/>
                         <div className={styles.btnGrp}>
                             <button class="search-button" onClick={search}>Search</button>

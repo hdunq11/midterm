@@ -65,8 +65,8 @@
     }
   },
 
-  "search for node(s) by filter": {
-    "api": "/search/",
+  "search for node by filter": {
+    "api": "/search",
     "method": "POST",
     "transfer_data": {
       "random_field": "value by field"
